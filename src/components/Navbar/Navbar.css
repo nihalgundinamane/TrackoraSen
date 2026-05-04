@@ -1,0 +1,430 @@
+/* ═══════════════════════════════════════
+   BASE NAVBAR
+═══════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  height: 66px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: var(--nav-bg);
+  transition: background 0.4s;
+}
+
+body.sakura   .navbar { border-bottom: 1px solid var(--border); box-shadow: 0 2px 30px rgba(255,80,140,0.06); }
+body.manga    .navbar { border-bottom: 3px solid var(--accent); }
+body.nightink .navbar { border-bottom: 1px solid var(--border); box-shadow: 0 2px 30px rgba(100,149,237,0.08); }
+
+.navbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0 1.6rem;
+}
+
+/* ═══════════════════════════════════════
+   LOGO
+═══════════════════════════════════════ */
+.nav-logo { text-decoration: none; flex-shrink: 0; }
+.logo-img { height: 44px; width: auto; object-fit: contain; display: block; }
+
+/* ═══════════════════════════════════════
+   NAV LINKS
+═══════════════════════════════════════ */
+.nav-links { display: flex; gap: 0.15rem; flex-shrink: 0; }
+
+body.sakura .nav-link,
+body.nightink .nav-link {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+body.sakura .nav-link:hover, body.sakura .nav-link.active,
+body.nightink .nav-link:hover, body.nightink .nav-link.active {
+  color: var(--accent);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+body.manga .nav-link {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+body.manga .nav-link:hover,
+body.manga .nav-link.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ═══════════════════════════════════════
+   SEARCH  — centred with auto margins
+═══════════════════════════════════════ */
+.nav-search {
+  flex: 1;
+  position: relative;
+  max-width: 260px;
+  /* push to centre: auto left margin after nav-links, auto right margin before nav-right */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+body.sakura .search-input,
+body.nightink .search-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 12px 7px 30px;
+  font-size: 0.75rem;
+  color: var(--text);
+  letter-spacing: 1px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+body.sakura .search-input:focus,
+body.nightink .search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+body.manga .search-input {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  padding: 6px 10px 6px 28px;
+  font-size: 0.75rem;
+  color: var(--text);
+  letter-spacing: 1px;
+  outline: none;
+}
+body.manga .search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text-faint); }
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  z-index: 1000;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeUp 0.15s ease both;
+  max-height: 320px;
+  overflow-y: auto;
+}
+body.sakura .search-dropdown,
+body.nightink .search-dropdown {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+body.manga .search-dropdown {
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.search-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 9px 14px;
+  text-align: left;
+  transition: background 0.12s;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.search-result:hover { background: var(--surface-hover); }
+.result-title {
+  font-size: 0.77rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.result-section {
+  font-size: 0.57rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════
+   RIGHT SIDE CLUSTER
+═══════════════════════════════════════ */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* ── Icon-only buttons (Export / Import) ── */
+.nav-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+.nav-icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface-hover);
+}
+body.manga .nav-icon-btn { border-radius: 2px; border-width: 2px; }
+
+/* ── Theme picker ── */
+.theme-selector { position: relative; flex-shrink: 0; }
+
+.theme-current-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+body.sakura .theme-current-btn,
+body.nightink .theme-current-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  letter-spacing: 1px;
+}
+body.sakura .theme-current-btn:hover,
+body.nightink .theme-current-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+body.manga .theme-current-btn {
+  border: 2px solid var(--border-bright, var(--border));
+  background: transparent;
+  color: var(--text);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  border-radius: 2px;
+}
+body.manga .theme-current-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+.theme-chevron { font-size: 0.48rem; opacity: 0.55; }
+
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 145px;
+  z-index: 1001;
+  animation: fadeUp 0.15s ease both;
+  overflow: hidden;
+}
+body.sakura .theme-dropdown,
+body.nightink .theme-dropdown {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+body.manga .theme-dropdown {
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.theme-option {
+  display: block;
+  width: 100%;
+  padding: 9px 14px;
+  text-align: left;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  transition: background 0.12s;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+.theme-option:hover { background: var(--surface-hover); color: var(--text); }
+.theme-option.active { color: var(--accent); background: var(--surface); }
+body.manga .theme-option { font-family: 'Bebas Neue', cursive; font-size: 0.88rem; letter-spacing: 2px; }
+
+/* ── Sync status pill ── */
+.sync-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+body.manga .sync-pill { border-radius: 2px; border-width: 2px; }
+
+.sync-pill.idle    { color: var(--text-faint); }
+.sync-pill.syncing { color: var(--accent); border-color: var(--accent); background: var(--surface); }
+.sync-pill.synced  { color: #4caf82; border-color: rgba(76,175,130,0.4); background: rgba(76,175,130,0.07); }
+.sync-pill.error   { color: var(--danger, #e05577); border-color: rgba(224,85,119,0.4); }
+.sync-pill.offline { color: var(--text-faint); }
+
+.sync-pill-icon { font-size: 0.78rem; }
+.sync-pill-icon.spin { display: inline-block; animation: spinIcon 0.8s linear infinite; }
+@keyframes spinIcon { to { transform: rotate(360deg); } }
+
+/* ── Avatar ── */
+.nav-user { position: relative; display: flex; align-items: center; gap: 0.4rem; }
+
+.nav-avatar-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+.nav-avatar-btn:hover { border-color: var(--accent); }
+.nav-avatar-img { width: 100%; height: 100%; object-fit: cover; }
+.nav-avatar-initial { font-size: 0.68rem; font-weight: 700; color: var(--accent); }
+
+/* ── User dropdown ── */
+.nav-user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  z-index: 1001;
+  border-radius: 10px;
+  padding: 6px 0;
+  animation: fadeUp 0.15s ease both;
+}
+body.sakura .nav-user-dropdown,
+body.nightink .nav-user-dropdown {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+body.manga .nav-user-dropdown {
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.nud-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 6px 14px 2px;
+}
+.nud-email {
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  padding: 0 14px 6px;
+  letter-spacing: 0.3px;
+}
+.nud-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3px 0;
+}
+.nud-item {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 0.71rem;
+  text-align: left;
+  color: var(--text-muted);
+  transition: background 0.12s;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+}
+.nud-item:hover { background: var(--surface-hover); color: var(--text); }
+.nud-item.danger:hover { color: var(--danger, #e05577); }
+body.manga .nud-item { font-family: 'Josefin Sans', sans-serif; font-size: 0.72rem; }
+
+/* ── Login button ── */
+.nav-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(66,133,244,0.4);
+  color: var(--text-muted);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-login-btn:hover {
+  border-color: #4285F4;
+  color: #4285F4;
+  background: rgba(66,133,244,0.07);
+}
+body.manga .nav-login-btn { border-radius: 2px; border-width: 2px; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .nav-search { max-width: 160px; }
+  .sync-pill-label { display: none; }
+  .sync-pill { padding: 3px 6px; }
+  .theme-current-label { display: none; }
+  .theme-current-btn { padding: 5px 8px; }
+}

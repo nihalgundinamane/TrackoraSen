@@ -1,0 +1,128 @@
+/* Genre field */
+.genre-field-wrap {
+  position: relative;
+}
+
+.genre-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  animation: fadeIn 0.15s ease;
+}
+
+.genre-suggest-btn {
+  font-size: 0.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: var(--surface);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.genre-suggest-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+body.manga .genre-suggest-btn {
+  border-radius: 2px;
+  border-width: 2px;
+}
+
+/* Rating picker */
+.rating-picker {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.rating-pip {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.rating-pip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.rating-pip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  transform: scale(1.08);
+}
+
+body.manga .rating-pip {
+  border-radius: 2px;
+  border-width: 2px;
+}
+
+body.manga .rating-pip.active {
+  color: var(--bg);
+}
+
+/* Textarea */
+.field-textarea {
+  resize: vertical;
+  min-height: 58px;
+}
+
+/* Season edit grid */
+.season-edit-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 90px auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.2s ease both;
+}
+
+.season-remove-btn {
+  font-size: 1rem;
+  color: var(--text-faint);
+  transition: color 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+
+.season-remove-btn:hover {
+  color: var(--danger);
+  transform: scale(1.2);
+}
+
+.seasons-empty-hint {
+  font-size: 0.66rem;
+  color: var(--text-faint);
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  font-style: italic;
+}
+
+.add-season-btn {
+  font-size: 0.6rem;
+  padding: 4px 12px;
+  border-radius: 14px;
+}
+
+/* Danger button */
+.danger-btn {
+  color: var(--danger) !important;
+  border-color: var(--danger) !important;
+  margin-right: auto;
+}
+
+.danger-btn:hover {
+  background: rgba(255, 68, 102, 0.1) !important;
+}

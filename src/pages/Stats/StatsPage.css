@@ -1,0 +1,392 @@
+.stats-page {
+  min-height: 100vh;
+}
+
+.stats-container {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.stats-hero {
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+body.sakura .stats-h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+body.manga .stats-h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--accent);
+  letter-spacing: 5px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stats-sub {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* TOP CARDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats-card {
+  padding: 1.5rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  animation: bounceIn 0.45s ease both;
+  transition: transform 0.2s;
+}
+
+body.sakura .stats-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+body.sakura .stats-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+body.manga .stats-card {
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+body.manga .stats-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.stats-card-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.8rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+body.manga .stats-card-value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+
+.stats-card-label {
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+body.manga .stats-card-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+}
+
+.stats-card-sub {
+  font-size: 0.58rem;
+  color: var(--text-faint);
+  letter-spacing: 1px;
+}
+
+/* 2-col row */
+.stats-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .stats-row-2 { grid-template-columns: 1fr; }
+}
+
+/* PANEL */
+.stats-panel {
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.4s ease both;
+}
+
+body.sakura .stats-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+body.manga .stats-panel {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+.panel-title {
+  font-size: 0.66rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+body.manga .panel-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 5px;
+}
+
+.panel-subtitle {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 1.2rem 0 0.8rem;
+}
+
+.panel-empty {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* BREAKDOWN */
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.breakdown-row {
+  display: grid;
+  grid-template-columns: 10px 1fr 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.breakdown-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.breakdown-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.breakdown-bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.breakdown-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  animation: barGrow 0.6s ease both;
+}
+
+.breakdown-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* WATCH TIME DETAIL */
+.watch-time-detail { margin-top: 1rem; }
+
+.wt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.wt-row.wt-total {
+  border-bottom: none;
+  padding-top: 0.7rem;
+}
+
+.wt-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.wt-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.wt-value.accent {
+  color: var(--accent);
+  font-size: 0.82rem;
+}
+
+/* TOP RATED */
+.top-rated-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.top-rated-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  animation: slideInLeft 0.3s ease both;
+}
+
+.top-rank {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.top-title {
+  flex: 1;
+  font-size: 0.76rem;
+  color: var(--text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-rating {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-family: 'Share Tech Mono', monospace;
+  flex-shrink: 0;
+}
+
+/* HISTOGRAM */
+.histogram-panel .histogram {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  height: 140px;
+  padding-top: 2rem;
+  position: relative;
+}
+
+.histo-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  position: relative;
+}
+
+.histo-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  position: absolute;
+  top: 0;
+}
+
+.histo-bar-wrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.histo-bar {
+  width: 100%;
+  background: var(--accent);
+  border-radius: 3px 3px 0 0;
+  min-height: 3px;
+  animation: growUp 0.6s ease both;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+
+.histo-bar:hover { opacity: 1; }
+
+body.manga .histo-bar {
+  background: var(--accent);
+  border-radius: 2px 2px 0 0;
+}
+
+.histo-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+}
+
+/* GENRE BARS */
+.genre-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.genre-bar-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 36px;
+  align-items: center;
+  gap: 0.8rem;
+  animation: slideInLeft 0.3s ease both;
+}
+
+.genre-bar-name {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-align: right;
+}
+
+.genre-bar-track {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.genre-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  animation: barGrow 0.7s ease both;
+}
+
+body.manga .genre-bar-fill {
+  border-radius: 1px;
+}
+
+.genre-bar-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  text-align: right;
+}

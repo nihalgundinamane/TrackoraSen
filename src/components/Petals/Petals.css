@@ -1,0 +1,54 @@
+.petals-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal-container {
+  position: absolute;
+  top: -40px;
+  animation: petalFall linear infinite;
+  will-change: transform;
+}
+
+.petal-svg {
+  animation: petalSpin linear infinite;
+  will-change: transform;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) translateX(var(--sway));
+  }
+  50% {
+    transform: translateY(50vh) translateX(0);
+  }
+  75% {
+    transform: translateY(75vh) translateX(calc(var(--sway) * -0.6));
+  }
+  100% {
+    transform: translateY(115vh) translateX(calc(var(--sway) * 0.3));
+    opacity: 0;
+  }
+}
+
+@keyframes petalSpin {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(0.85); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Only show in sakura and nightink themes */
+body.manga .petals-wrap {
+  display: none;
+}
+
+body.nightink .petal-svg stop:first-child { stop-color: #c8d8ff; }
+body.nightink .petal-svg stop:nth-child(2) { stop-color: #7aaaff; }
+body.nightink .petal-svg stop:last-child   { stop-color: #3a6fd8; stop-opacity: 0.7; }

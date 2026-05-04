@@ -1,0 +1,335 @@
+.anime-card {
+  position: relative;
+  padding: 1.1rem 1.1rem 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease,
+              border-color 0.2s;
+  animation: fadeUp 0.35s ease both;
+  will-change: transform;
+}
+
+body.sakura .anime-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+
+body.sakura .anime-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--border-bright);
+  box-shadow: 0 12px 40px rgba(255, 80, 140, 0.18);
+}
+
+body.manga .anime-card {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: 4px;
+}
+
+body.manga .anime-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent);
+  border-color: var(--accent);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  flex: 1;
+  min-width: 0;
+}
+
+body.manga .card-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  line-height: 1.15;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.anime-card:hover .card-actions {
+  opacity: 1;
+}
+
+.card-btn {
+  font-size: 0.78rem;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+body.sakura .card-btn:hover {
+  background: var(--surface-hover);
+  color: var(--accent);
+}
+
+body.manga .card-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 2px;
+}
+
+.card-btn.danger:hover {
+  color: var(--danger) !important;
+  background: rgba(255, 68, 102, 0.1) !important;
+}
+
+/* GENRES */
+.card-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.genre-tag {
+  font-size: 0.56rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+body.sakura .genre-tag {
+  background: rgba(255, 105, 160, 0.08);
+  border: 1px solid rgba(255, 105, 160, 0.2);
+  color: var(--accent);
+}
+
+body.manga .genre-tag {
+  background: transparent;
+  border: 1.5px solid var(--border-bright);
+  color: var(--text-muted);
+  border-radius: 2px;
+}
+
+/* STAR RATING */
+.star-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.star {
+  font-size: 0.75rem;
+  transition: transform 0.15s;
+}
+
+.rating-num {
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  margin-left: 4px;
+  letter-spacing: 1px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* EPISODE TRACKER */
+.card-eps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ep-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ep-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.ep-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
+}
+
+body.manga .ep-btn {
+  border-radius: 2px;
+  border-width: 2px;
+}
+
+.ep-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  flex: 1;
+  text-align: center;
+}
+
+/* SEASONS */
+.card-seasons-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card-seasons-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: color 0.15s;
+  user-select: none;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.card-seasons-toggle:hover { color: var(--accent); }
+
+.seasons-expand-icon {
+  font-size: 0.65rem;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-seasons-toggle.open .seasons-expand-icon {
+  transform: rotate(90deg);
+}
+
+.card-seasons-panel {
+  animation: expandDown 0.28s ease both;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+}
+
+/* SEASON ROW */
+.season-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.season-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.season-label {
+  font-size: 0.64rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.season-ep-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* COMMENT */
+.card-comment {
+  font-size: 0.68rem;
+  color: var(--text-faint);
+  font-style: italic;
+  line-height: 1.5;
+  border-left: 2px solid var(--border);
+  padding-left: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+/* ── Mirror card (auto-copy in Completed from Watch Again) ── */
+.mirror-card {
+  opacity: 0.88;
+  position: relative;
+}
+
+body.sakura .mirror-card {
+  border-color: rgba(100, 200, 120, 0.25);
+  background: rgba(80, 200, 120, 0.04);
+}
+
+body.manga .mirror-card {
+  border-color: rgba(40, 140, 60, 0.35);
+  background: rgba(40, 140, 60, 0.03);
+}
+
+.mirror-badge {
+  font-size: 0.58rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+body.sakura .mirror-badge {
+  background: rgba(80, 200, 120, 0.12);
+  border: 1px solid rgba(80, 200, 120, 0.3);
+  color: #50c878;
+}
+
+body.manga .mirror-badge {
+  background: rgba(40, 140, 60, 0.1);
+  border: 1.5px solid rgba(40, 140, 60, 0.35);
+  color: #1a6b30;
+  border-radius: 2px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.mirror-lock {
+  font-size: 0.85rem;
+  opacity: 0.45;
+  cursor: default;
+}

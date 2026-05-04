@@ -1,0 +1,231 @@
+.home-page {
+  overflow-x: hidden;
+}
+
+/* halftone bg only for manga */
+.home-halftone {
+  display: none;
+}
+
+body.manga .home-halftone {
+  display: block;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(26, 18, 8, 0.07) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* HERO */
+.home-hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 2rem 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+body.manga .hero-eyebrow {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  letter-spacing: 8px;
+}
+
+body.sakura .hero-h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+body.manga .hero-h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(4rem, 12vw, 8rem);
+  letter-spacing: 6px;
+  color: var(--accent);
+  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.12);
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+
+body.sakura .hero-h1 span {
+  color: var(--accent);
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+body.manga .hero-h1 span {
+  color: var(--accent2);
+}
+
+.hero-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  line-height: 1.9;
+  margin-bottom: 2.2rem;
+}
+
+body.manga .hero-sub {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  font-size: 0.72rem;
+  padding: 10px 26px;
+}
+
+/* STATS STRIP */
+.home-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.4rem 2rem;
+  border-radius: 14px;
+  animation: bounceIn 0.5s ease both;
+  min-width: 120px;
+  transition: transform 0.2s;
+}
+
+body.sakura .stat-bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+body.sakura .stat-bubble:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+body.manga .stat-bubble {
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+body.manga .stat-bubble:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.bubble-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+body.manga .bubble-value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
+
+.bubble-label {
+  font-size: 0.6rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+body.manga .bubble-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+}
+
+/* FEATURES */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card {
+  padding: 1.4rem;
+  border-radius: 12px;
+  animation: fadeUp 0.4s ease both;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+body.sakura .feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+body.sakura .feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-bright);
+}
+
+body.manga .feature-card {
+  background: var(--bg3);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+body.manga .feature-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--accent);
+  border-color: var(--accent);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+}
+
+.feature-title {
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+body.manga .feature-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+}
+
+.feature-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

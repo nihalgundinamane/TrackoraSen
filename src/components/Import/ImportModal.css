@@ -1,0 +1,92 @@
+.import-modal { max-width: 500px; }
+
+.import-instructions {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+body.manga .import-instructions { border-radius: 2px; border-width: 2px; }
+
+.import-source {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+.import-source code {
+  background: var(--surface-hover);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: var(--accent);
+}
+
+.import-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.import-warning {
+  font-size: 0.7rem;
+  color: var(--danger);
+  background: rgba(255,68,102,0.08);
+  border: 1px solid rgba(255,68,102,0.25);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+.import-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+.import-error {
+  font-size: 0.72rem;
+  color: var(--danger);
+  margin-bottom: 0.6rem;
+}
+
+.import-preview {
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+.preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  background: var(--surface);
+  border-radius: 4px;
+}
+.preview-title { color: var(--text); }
+.preview-section { color: var(--accent); font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; }
+.preview-more { font-size: 0.66rem; color: var(--text-faint); padding: 4px 8px; }
+
+.import-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.import-done-icon { font-size: 2.5rem; }
+.import-done-msg { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; }
